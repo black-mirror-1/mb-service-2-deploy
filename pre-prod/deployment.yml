@@ -1,0 +1,54 @@
+apiVersion: apps/v1beta2
+kind: ReplicaSet
+metadata:
+  labels:
+    appName: mb-service-2-pre-prod
+  name: mb-service-2-pre-prod
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      appName: mb-service-2-pre-prod
+  template:
+    metadata:
+      labels:
+        appName: mb-service-2-pre-prod
+    spec:
+      affinity:
+        nodeAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - preference:
+                matchExpressions:
+                  - key: lifecycle
+                    operator: In
+                    values:
+                      - Ec2Spot
+              weight: 1
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: intent
+                    operator: In
+                    values:
+                      - pre-prod-low-risk
+      containers:
+        - image: 693885100167.dkr.ecr.us-east-2.amazonaws.com/master-builder/sample-service-1:v1
+          name: mb-service-2-pre-prod
+          ports:
+            - containerPort: 8080
+          resources:
+            limits:
+              cpu: 1024m
+              memory: 512Mi
+            requests:
+              cpu: 1024m
+              memory: 512Mi
+          securityContext:
+            allowPrivilegeEscalation: false
+            privileged: false
+            readOnlyRootFilesystem: true
+      tolerations:
+        - effect: PreferNoSchedule
+          key: spotInstance
+          operator: Equal
+          value: 'true'
