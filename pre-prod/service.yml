@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: mb-service-1-pre-prod
+  name: mb-service-2-pre-prod
 spec:
   ports:
     - port: 80
       targetPort: 8080
   selector:
-    app: mb-service-1-pre-prod
+    app: mb-service-2-pre-prod
   type: LoadBalancer
