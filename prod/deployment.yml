@@ -23,7 +23,7 @@ spec:
                   - key: lifecycle
                     operator: In
                     values:
-                      - Ec2Spot
+                      - OnDemand
               weight: 1
           requiredDuringSchedulingIgnoredDuringExecution:
             nodeSelectorTerms:
@@ -31,7 +31,7 @@ spec:
                   - key: intent
                     operator: In
                     values:
-                      - prod-low-risk
+                      - prod-high-risk
       containers:
         - image: 693885100167.dkr.ecr.us-east-2.amazonaws.com/master-builder/sample-service-2:v4
           name: mb-service-2-prod
@@ -48,8 +48,3 @@ spec:
             allowPrivilegeEscalation: false
             privileged: false
             readOnlyRootFilesystem: true
-      tolerations:
-        - effect: PreferNoSchedule
-          key: spotInstance
-          operator: Equal
-          value: 'true'
