@@ -35,7 +35,7 @@ spec:
                     values:
                       - prod-high-risk
       containers:
-        - image: 693885100167.dkr.ecr.us-east-2.amazonaws.com/master-builder/sample-service-2:v13
+        - image: 693885100167.dkr.ecr.us-east-2.amazonaws.com/master-builder/sample-service-2:v14
           name: mb-service-2-prod
           ports:
             - containerPort: 8080
