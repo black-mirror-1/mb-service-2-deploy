@@ -4,7 +4,7 @@ metadata:
   labels:
     appName: mb-service-2-pre-prod
   name: mb-service-2-pre-prod
-  namespace: master-builder-pre-prod
+  namespace: ns-master-builder-2
 spec:
   replicas: 3
   selector:
