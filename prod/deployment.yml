@@ -25,7 +25,7 @@ spec:
                   - key: lifecycle
                     operator: In
                     values:
-                      - OnDemand
+                      - Ec2Spot
               weight: 1
           requiredDuringSchedulingIgnoredDuringExecution:
             nodeSelectorTerms:
@@ -33,7 +33,7 @@ spec:
                   - key: intent
                     operator: In
                     values:
-                      - prod-high-risk
+                      - prod-low-risk
       containers:
         - image: 693885100167.dkr.ecr.us-east-2.amazonaws.com/master-builder/sample-service-2:v3
           name: mb-service-2-prod
