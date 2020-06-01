@@ -33,7 +33,7 @@ spec:
                     values:
                       - pre-prod-low-risk
       containers:
-        - image: 693885100167.dkr.ecr.us-east-2.amazonaws.com/master-builder/sample-service-2:v15
+        - image: 693885100167.dkr.ecr.us-east-2.amazonaws.com/master-builder/sample-service-2:v1
           name: mb-service-2-pre-prod
           ports:
             - containerPort: 8080
