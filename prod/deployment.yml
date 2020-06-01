@@ -4,7 +4,7 @@ metadata:
   labels:
     appName: mb-service-2-prod
   name: mb-service-2-prod
-  namespace: master-builder-prod
+  namespace: ns-master-builder-2
   annotations:
     strategy.spinnaker.io/max-version-history: '2'
 spec:
